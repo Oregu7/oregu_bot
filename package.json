@@ -1,0 +1,22 @@
+{
+  "name": "oregu_bot",
+  "version": "0.0.3",
+  "description": "simple portfolio bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Baam",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.1",
+    "mongoose-paginate": "^5.0.3",
+    "vk-io": "^4.0.0-beta.12"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
