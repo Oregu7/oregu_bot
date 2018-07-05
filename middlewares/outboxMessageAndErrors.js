@@ -1,6 +1,6 @@
 // Skip outbox message and handle errors
-module.exports = async(context, next) => {
-    if (context.is("message") && context.isOutbox()) {
+module.exports = async(ctx, next) => {
+    if (ctx.is("message") && ctx.isOutbox()) {
         return;
     }
 

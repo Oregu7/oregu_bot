@@ -1,9 +1,9 @@
 // Handle message payload
-module.exports = async(context, next) => {
-    if (context.is("message")) {
-        const payload = context.getMessagePayload();
+module.exports = async(ctx, next) => {
+    if (ctx.is("message")) {
+        const payload = ctx.getMessagePayload();
 
-        context.state.command = payload && payload.command ?
+        ctx.state.command = payload && payload.command ?
             payload.command :
             null;
     }
