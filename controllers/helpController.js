@@ -1,23 +1,22 @@
-const { Markup, compileMessage } = require("../helpers");
-const { UserModel } = require("../models");
+const { compileMessage } = require("../helpers");
+//const { UserModel } = require("../models");
 
 module.exports = async(ctx) => {
+    //const user = await UserModel.getOrCreate(ctx);
 
-    const user = await UserModel.getOrCreate(ctx);
+    const message = `Oregu Bot - это бот, который ознакомит Вас с моим портфолио, 
+    а также поможет задать мне вопрос.
+    
+    Используйте эти команды, чтобы управлять ботом:
 
-    const message = `Здравствуйте, ${user.firstName}!
-    Я - интерактивный портфолио-bot \u{1F916}`;
-
-    const keyboard = Markup.keyboard([
-        [
-            Markup.defaultButton("\u{1F464} Обо мне", "aboutme"),
-            Markup.negativeButton("\u{1F5A5} Работы", "works"),
-        ],
-        Markup.primaryButton("\u{270D} Задать вопрос", "question"),
-    ]);
+    /aboutme - информация обо мне
+    /works - мои работы
+    /question - задать вопрос
+    /help - помощь`;
 
     return await ctx.send({
         message: compileMessage(message),
         //keyboard,
+        attachment: "photo-168410376_456239021",
     });
 };

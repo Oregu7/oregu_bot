@@ -1,8 +1,13 @@
 const { VK } = require("vk-io");
 
 const middlewares = require("./middlewares");
-const { startController, helpController } = require("./controllers");
 const { createHearCommand } = require("./helpers");
+const {
+    startController,
+    helpController,
+    aboutMeController,
+    backToMainController,
+} = require("./controllers");
 
 const vk = new VK();
 
@@ -22,5 +27,8 @@ updates.use(middlewares.messagePayload);
 
 hearCommand("start", [/^\/start$/, /^Начать$/i], startController);
 hearCommand("help", helpController);
+hearCommand("aboutme", [/^\/aboutme$/, /\u{1F464} Обо мне/iu, /\u{2139} Информация/iu], aboutMeController.informationAction);
+hearCommand("skills", [/^\/skills$/, /\u{2B50} Навыки/iu], aboutMeController.skillsAction);
+hearCommand("back", [/^\/back$/, /\u{1F3E0} В гл.меню/iu], backToMainController);
 
 module.exports = vk;
