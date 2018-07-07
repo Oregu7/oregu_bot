@@ -1,6 +1,6 @@
 // Skip outbox message and handle errors
 module.exports = async(ctx, next) => {
-    if (ctx.is("message") && ctx.isOutbox()) {
+    if (ctx.is("message") && ctx.isOutbox) {
         return;
     }
 

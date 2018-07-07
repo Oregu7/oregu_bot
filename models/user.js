@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.statics.getOrCreate = async function(ctx) {
-    const { from: { id, type }, vk } = ctx;
+    const { peerId: id, vk } = ctx;
     const userIsExist = await this.findOne({ userId: id });
     if (userIsExist) return userIsExist;
 
@@ -25,7 +25,6 @@ UserSchema.statics.getOrCreate = async function(ctx) {
 
     const user = await this.create({
         userId: id,
-        type,
         sex,
         firstName: escape(first_name),
         lastName: escape(last_name),

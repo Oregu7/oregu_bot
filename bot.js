@@ -1,11 +1,12 @@
 const { VK } = require("vk-io");
 
 const middlewares = require("./middlewares");
-const { createHearCommand } = require("./helpers");
+const { Route, IDBLevel, Router, DefaultRoute } = require("./src/router");
 const {
     startController,
     helpController,
     aboutMeController,
+    questionController,
     backToMainController,
 } = require("./controllers");
 
@@ -18,17 +19,27 @@ vk.setOptions({
 });
 
 const { updates } = vk;
-const hearCommand = createHearCommand(updates);
 
 // Skip outbox message and handle errors
 updates.use(middlewares.outboxMessageAndErrors);
 // Handle message payload
 updates.use(middlewares.messagePayload);
+// Session middleware
+updates.use(middlewares.session);
 
-hearCommand("start", [/^\/start$/, /^Начать$/i], startController);
-hearCommand("help", helpController);
-hearCommand("aboutme", [/^\/aboutme$/, /\u{1F464} Обо мне/iu, /\u{2139} Информация/iu], aboutMeController.informationAction);
-hearCommand("skills", [/^\/skills$/, /\u{2B50} Навыки/iu], aboutMeController.skillsAction);
-hearCommand("back", [/^\/back$/, /\u{1F3E0} В гл.меню/iu], backToMainController);
+const router = new Router(new IDBLevel("state.db"), vk, [
+    Route(["^/start$", "^Начать$"], startController),
+    Route(["^/aboutme$", "\u{1F464} Обо мне", "\u{2139} Информация"], aboutMeController.informationAction),
+    Route(["^/skills$", "\u{2B50} Навыки"], aboutMeController.skillsAction),
+    Route(["^/back$", "\u{1F3E0} В гл.меню"], backToMainController),
+    Route(["^/help$", "помощь"], helpController),
+    Route(["^/question$", "\u{270D} Задать вопрос"], true, [
+        Route("^/$", questionController.baseAction),
+        Route(["^/cancel$", "^отмена$"], questionController.cancelAction),
+        DefaultRoute(questionController.questionAction),
+    ]),
+]);
+
+updates.on("message", router);
 
 module.exports = vk;

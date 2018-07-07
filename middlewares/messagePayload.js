@@ -1,11 +1,11 @@
 // Handle message payload
 module.exports = async(ctx, next) => {
     if (ctx.is("message")) {
-        const payload = ctx.getMessagePayload();
+        const { messagePayload: payload } = ctx;
 
-        ctx.state.command = payload && payload.command ?
-            payload.command :
-            null;
+        ctx.text = payload && payload.command ?
+            "/" + payload.command :
+            ctx.text;
     }
 
     await next();
