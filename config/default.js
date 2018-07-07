@@ -10,6 +10,7 @@ const REQUIRED_VARIABLES = [
     "BOT_TOKEN",
     "BOT_CONFIRMATION",
     "DB_URI",
+    "ADMIN_ID",
 ];
 
 REQUIRED_VARIABLES.forEach((name) => {
@@ -29,5 +30,6 @@ module.exports = {
         port: Number(process.env.PORT),
         token: process.env.BOT_TOKEN,
         confirmation: process.env.BOT_CONFIRMATION,
+        adminId: process.env.ADMIN_ID,
     },
 };
