@@ -4,7 +4,7 @@ const mongoosePaginate = require("mongoose-paginate");
 const ProgramSchema = new mongoose.Schema({
     title: { type: String, required: true, maxlength: 150 },
     description: { type: String, required: true },
-    images: [String],
+    attachments: [String],
     sourceLink: { type: String, default: "" },
     exampleLink: { type: String, default: "" },
     createdAt: { type: Date, default: Date.now },
