@@ -6,6 +6,7 @@ async function sendProgramByPageNumber(ctx, page = 1) {
     const result = await ProgramModel.paginate({}, {
         page,
         limit: 1,
+        sort: "rank",
     });
 
     const message = createProgramMessage(result);
@@ -44,10 +45,13 @@ function createProgramMessage(result) {
         attachments,
         sourceLink,
         exampleLink,
+        tags,
     } = program;
 
     const message = `${title}\n
-    ${description}`;
+    ${description}
+    
+    ${tags.map((tag) => "#"+tag).join(" ")}`;
 
     const attachment = attachments.join(",");
     const { next, previous } = paginate(result);

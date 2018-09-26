@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 module.exports = (dbURI) => {
-    mongoose.connect(dbURI);
+    mongoose.connect(dbURI, { useNewUrlParser: true });
 
     const gracefulShutdown = (msg, callback) => {
         mongoose.connection.close(() => {

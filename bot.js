@@ -9,6 +9,7 @@ const {
     aboutMeController,
     questionController,
     backToMainController,
+    defaultController,
 } = require("./controllers");
 
 const vk = new VK();
@@ -39,6 +40,7 @@ const router = new Router(new IDBLevel("state.db"), vk, [
     ]),
     Route(["^/works$", "\u{1F5A5} Работы"], worksController.baseAction),
     Route("^/page (\\d+)$", worksController.pageAction),
+    DefaultRoute(defaultController),
 ]);
 
 updates.on("message", router);

@@ -4,6 +4,7 @@ const aboutMeController = require("./aboutMeController");
 const backToMainController = require("./backToMainController");
 const questionController = require("./questionController");
 const worksController = require("./worksController");
+const defaultController = require("./defaultController");
 
 module.exports = {
     startController,
@@ -12,4 +13,5 @@ module.exports = {
     aboutMeController,
     questionController,
     backToMainController,
+    defaultController,
 };
