@@ -29,17 +29,17 @@ updates.use(middlewares.outboxMessageAndErrors);
 updates.use(middlewares.messagePayload);
 
 const router = new Router(new IDBLevel("state.db"), vk, [
-    Route(["^/start$", "^Начать$"], startController),
-    Route(["^/aboutme$", "\u{1F464} Обо мне", "\u{2139} Информация"], aboutMeController.informationAction),
-    Route(["^/skills$", "\u{2B50} Навыки"], aboutMeController.skillsAction),
-    Route(["^/(back|cancel)$", "\u{1F3E0} В гл.меню"], backToMainController),
-    Route(["^/help$", "помощь"], helpController),
-    Route(["^/question$", "\u{270D} Задать вопрос"], true, [
+    Route(["^/start$", "^Начать$", "^Команды$"], startController),
+    Route(["^/aboutme$", "Обо мне", "Информация"], aboutMeController.informationAction),
+    Route(["^/skills$", "Навыки"], aboutMeController.skillsAction),
+    Route(["^/(back|cancel)$", "В гл.меню"], backToMainController),
+    Route(["^/help$", "помощь"], startController),
+    Route(["^/question$", "Задать вопрос"], true, [
         Route("^/$", questionController.baseAction),
         Route(["^/cancel$", "^отмена$"], questionController.cancelAction),
         DefaultRoute(questionController.questionAction),
     ]),
-    Route(["^/works$", "\u{1F5A5} Работы"], worksController.baseAction),
+    Route(["^/works$", "Работы"], worksController.baseAction),
     Route("^/page (\\d+)$", worksController.pageAction),
     DefaultRoute(defaultController),
 ]);

@@ -9,6 +9,10 @@ async function sendProgramByPageNumber(ctx, page = 1) {
         sort: "rank",
     });
 
+    // если не нашел страницу
+    if (!result.docs.length)
+        return ctx.send({ message: "⚠️ Я не нашел приложение с данным идентификатором, попробуйте: /page 1" });
+
     const message = createProgramMessage(result);
     return ctx.send(message);
 }
