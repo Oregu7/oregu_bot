@@ -1,28 +1,31 @@
 {
-  "name": "oregu_bot",
-  "version": "0.0.3",
-  "description": "simple portfolio bot",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Baam",
-  "license": "ISC",
-  "dependencies": {
-    "apiai": "^4.0.3",
-    "body-parser": "^1.18.3",
-    "config": "^1.30.0",
-    "dotenv": "^6.0.0",
-    "escape-html": "^1.0.3",
-    "express": "^4.16.3",
-    "level": "^4.0.0",
-    "lodash": "^4.17.10",
-    "moment": "^2.22.2",
-    "mongoose": "^5.2.1",
-    "mongoose-paginate": "^5.0.3",
-    "vk-io": "^4.0.0-beta.12"
-  },
-  "devDependencies": {
-    "nodemon": "^1.17.5"
-  }
+    "name": "oregu_bot",
+    "version": "1.0.0",
+    "description": "simple portfolio bot",
+    "main": "index.js",
+    "engines": {
+        "node": "8.11.1"
+    },
+    "scripts": {
+        "start": "node ./index.js"
+    },
+    "author": "Baam",
+    "license": "ISC",
+    "dependencies": {
+        "apiai": "^4.0.3",
+        "body-parser": "^1.18.3",
+        "config": "^1.30.0",
+        "dotenv": "^6.0.0",
+        "escape-html": "^1.0.3",
+        "express": "^4.16.3",
+        "level": "^4.0.0",
+        "lodash": "^4.17.10",
+        "moment": "^2.22.2",
+        "mongoose": "^5.2.1",
+        "mongoose-paginate": "^5.0.3",
+        "vk-io": "^4.0.0-beta.12"
+    },
+    "devDependencies": {
+        "nodemon": "^1.17.5"
+    }
 }
