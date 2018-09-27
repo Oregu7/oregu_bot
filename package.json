@@ -2,7 +2,7 @@
     "name": "oregu_bot",
     "version": "1.0.0",
     "description": "simple portfolio bot",
-    "main": "index.js",
+    "main": "./index.js",
     "engines": {
         "node": "8.11.1"
     },
