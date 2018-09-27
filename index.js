@@ -6,7 +6,10 @@ async function run() {
         await vk.updates.startPolling();
         console.log("Polling started");
     } else {
-        await vk.updates.startWebhook();
+        await vk.updates.startWebhook({
+            port: process.env.PORT,
+        });
+
         console.log("Webhook server started");
     }
 }

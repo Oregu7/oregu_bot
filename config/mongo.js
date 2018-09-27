@@ -1,7 +1,19 @@
 const mongoose = require("mongoose");
 
 module.exports = (dbURI) => {
-    mongoose.connect(dbURI, { useNewUrlParser: true });
+    mongoose.connect(dbURI, {
+        autoReconnect: true,
+
+        poolSize: 20,
+        socketTimeoutMS: 480000,
+        keepAlive: 300000,
+
+        keepAliveInitialDelay: 300000,
+        connectTimeoutMS: 30000,
+        reconnectTries: Number.MAX_VALUE,
+        reconnectInterval: 1000,
+        useNewUrlParser: true,
+    });
 
     const gracefulShutdown = (msg, callback) => {
         mongoose.connection.close(() => {

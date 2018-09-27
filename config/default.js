@@ -2,6 +2,7 @@
 require("dotenv").config();
 // загружаем компоненты
 const constants = require("./constants");
+const stickers = require("./stickers");
 const mongo = require("./mongo");
 // необходимые переменные окружения
 const REQUIRED_VARIABLES = [
@@ -25,6 +26,7 @@ mongo(process.env.DB_URI);
 // шарим конфиг
 module.exports = {
     constants,
+    stickers,
     env: process.env.NODE_ENV,
     bot: {
         port: Number(process.env.PORT),

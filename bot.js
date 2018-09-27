@@ -13,11 +13,12 @@ const {
 } = require("./controllers");
 
 const vk = new VK();
-
 vk.setOptions({
     token: process.env.BOT_TOKEN,
     apiMode: "parallel_selected",
-    webhookPath: "/webhook/secret-path",
+    webhookPath: process.env.BOT_WEBHOOK,
+    webhookSecret: process.env.BOT_SECRET,
+    webhookConfirmation: process.env.BOT_CONFIRMATION,
 });
 
 const { updates } = vk;
